@@ -1,0 +1,35 @@
+{% extends "customer/base.html" %}
+
+{% block title %}Customer List{% endblock %}
+
+{% block content %}
+    {% if customers %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Contact Name</th>
+                    <th scope="col">Telephone No.</th>
+                    <th scope="col" class="text-end">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <th scope="row">{{ customer.id }}</th>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.address1 }}</td>
+                    <td>{{ customer.contact_name }}</td>
+                    <td>{{ customer.telephone_no }}</td>
+                    <td class="text-end"><a class="btn btn-primary" href="{{ customer.get_absolute_url }}" role="button">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>There are currently no customers in the database</p>
+    {% endif %}
+    <a class="btn btn-primary" href="/customer/add" role="button">Add Customer</a>
+{% endblock %}

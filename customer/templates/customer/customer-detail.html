@@ -1,0 +1,71 @@
+{% extends "customer/base.html" %}
+
+{% block title %}Quote Details{% endblock %}
+
+{% block content %}
+    <h1>{{ customer.name }}</h1>
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Address Details</h5>
+                <p class="card-text">{{ customer.address1 }}</p>
+                <p class="card-text">{{ customer.address2 }}</p>
+                <p class="card-text">{{ customer.address3 }}</p>
+                <p class="card-text">{{ customer.town }}</p>
+                <p class="card-text">{{ customer.county }}</p>
+                <p class="card-text">{{ customer.post_code }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Contact Details</h5>
+                <p class="card-text">{{ customer.contact_name }}</p>
+                <p class="card-text">{{ customer.email_address }}</p>
+                <p class="card-text">{{ customer.telephone_no }}</p>
+                <p class="card-text">{{ customer.mobile_no }}</p>
+                <p class="card-text">{{ customer.alt_telephone_no }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    {% if customer.quotes.count > 0 %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">#</th>
+                <th scope="col" class="text-end">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quote in customer.quotes.all %}
+            <tr>
+                {% comment %} <th scope="row">{{ forloop.counter }}</th> {% endcomment %}
+                {% comment %} <td>{{ quote.description }}</td> {% endcomment %}
+                <td>#</td>
+                <td>#</td>
+                <td class="text-end">£</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                {% comment %} <th scope="row">Total</th> {% endcomment %}
+                <td></td>
+                <td></td>
+                <td class="text-end"></td>
+                {% comment %} <td class="text-end">£{{ quote.calculated_total|floatformat:"2g" }}</td> {% endcomment %}
+            </tr>
+        </tbody>
+        
+    </table>
+    {% else %}
+        <p>There are no quotes to display</p>
+    {% endif %}
+    <a class="btn btn-primary" href="{% url "customer-list" %}" role="button">Go Back</a>
+    <a class="btn btn-primary" href="{{ customer.get_absolute_url }}/update" role="button">Update Customer</a>
+    <a class="btn btn-danger" href="{{ customer.get_absolute_url }}/delete" role="button">Delete Customer</a>
+    <a class="btn btn-secondary" href="{{ customer.get_absolute_url }}/addquote" role="button">Add Quote</a>
+{% endblock %}

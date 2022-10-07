@@ -1,0 +1,67 @@
+{% extends "customer/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2>Add Customer</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-6">
+            {{ form.name|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.contact_name|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.address1|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.email_address|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.address2|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.telephone_no|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.address3|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.mobile_no|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.town|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.alt_telephone_no|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.county|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.post_code|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save Customer</button><a class="btn btn-danger" href='/customer'>Cancel</a>
+  </form>
+{% endblock %}
