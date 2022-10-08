@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <h2>Welcome to Quote Centre</h2>
+  <p class="lead">
+    If you already have an account, please <a href="{% url "login" %}">log in</a>. 
+  </p>
+  <p class="lead">
+    If you are new to Quote Centre, get started
+    by creating a <a href="{% url "regular-signup" %}">regular account</a> 
+    or an <a href="{% url "admin-signup" %}">admin account</a>.
+  </p>
+{% endblock %}

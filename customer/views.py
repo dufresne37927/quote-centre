@@ -1,13 +1,13 @@
-from django.shortcuts import render, redirect
 from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
-from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 
 from .forms import CustomerForm
 from .models import Customer
 from quote.forms import QuoteAddFromCustomerForm
 from quote.models import Quote
+from core.decorators import admin_required
 
 # Create your views here.
 
@@ -26,6 +26,7 @@ class CustomerAddView(LoginRequiredMixin, CreateView):
     template_name = "customer/customer-add.html"
     success_url = "/customer"
 
+@method_decorator([admin_required], name='dispatch')
 class CustomerDeleteView(LoginRequiredMixin, DeleteView):
     model = Customer
     template_name = "customer/customer-delete.html"

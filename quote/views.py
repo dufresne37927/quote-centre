@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
 from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
-from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
 
 from .forms import QuoteForm
 from .models import Quote
+from core.decorators import admin_required
+
 
 # Create your views here.
 
@@ -23,6 +24,7 @@ class QuoteAddView(LoginRequiredMixin, CreateView):
     template_name = "quote/quote-add.html"
     success_url = "/quote"
 
+@method_decorator([admin_required], name='dispatch')
 class QuoteDeleteView(LoginRequiredMixin, DeleteView):
     model = Quote
     template_name = "quote/quote-delete.html"

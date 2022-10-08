@@ -1,13 +1,13 @@
-from django.shortcuts import render, redirect
 from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
-from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 
 from .forms import SurveyorForm
 from .models import Surveyor
 from quote.forms import QuoteAddFromSurveyorForm
 from quote.models import Quote
+from core.decorators import admin_required
 
 # Create your views here.
 
@@ -28,6 +28,7 @@ class SurveyorAddView(LoginRequiredMixin, CreateView):
     template_name = "surveyor/surveyor-add.html"
     success_url = "/surveyor"
 
+@method_decorator([admin_required], name='dispatch')
 class SurveyorDeleteView(LoginRequiredMixin, DeleteView):
     model = Surveyor
     template_name = "surveyor/surveyor-delete.html"
