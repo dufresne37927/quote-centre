@@ -57,6 +57,9 @@ class Quote(models.Model):
     def get_absolute_url(self):
         return reverse("quote-detail", args=[self.id])
 
+    def __str__(self):
+        return "%s (id: %s, customer: %s)" %(self.reference, self.id, self.customer.name,)
+
     @property
     def calculated_total(self):
         # all_quotes = Quote.objects.all()
