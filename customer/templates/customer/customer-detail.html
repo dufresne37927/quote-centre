@@ -1,4 +1,4 @@
-{% extends "customer/base.html" %}
+{% extends "core/base.html" %}
 
 {% block title %}Customer Details{% endblock %}
 
@@ -9,11 +9,18 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Address Details</h5>
+                {% comment %} <label for="address1">Address Line 1</label> {% endcomment %}
+                <small class="text-muted">Address Line 1</small>
                 <p class="card-text">{{ customer.address1 }}</p>
-                <p class="card-text">{{ customer.address2 }}</p>
+                <small class="text-muted">Address Line 2</small>
+                <p class="card-text">{{ customer.address2 }}<p>
+                <small class="text-muted">Address Line 3</small>
                 <p class="card-text">{{ customer.address3 }}</p>
+                <small class="text-muted">Town</small>
                 <p class="card-text">{{ customer.town }}</p>
+                <small class="text-muted">County</small>
                 <p class="card-text">{{ customer.county }}</p>
+                <small class="text-muted">Post Code</small>
                 <p class="card-text">{{ customer.post_code }}</p>
             </div>
           </div>
@@ -22,10 +29,15 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Contact Details</h5>
+                <small class="text-muted">Contact Name</small>
                 <p class="card-text">{{ customer.contact_name }}</p>
+                <small class="text-muted">e-Mail Address</small>
                 <p class="card-text">{{ customer.email_address }}</p>
+                <small class="text-muted">Telephone No.</small>
                 <p class="card-text">{{ customer.telephone_no }}</p>
+                <small class="text-muted">Mobile No.</small>
                 <p class="card-text">{{ customer.mobile_no }}</p>
+                <small class="text-muted">Alternate Telephone No.</small>
                 <p class="card-text">{{ customer.alt_telephone_no }}</p>
             </div>
           </div>

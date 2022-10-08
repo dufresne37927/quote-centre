@@ -1,0 +1,43 @@
+{% extends "core/base.html" %}
+
+{% block title %}Welcome to Quote Centre{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container py-4">
+      <header class="pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          <span class="fs-4">Welcome to Quote Centre</span>
+        </a>
+      </header>
+  
+      <div class="row align-items-md-stretch">
+        <div class="col-md-4">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Customers</h2>
+            <p>This is where you can add customers to the database. A customer is required to create a quote.</p>
+            <a class="btn btn-secondary" href="{% url "customer-list" %}">View Customers</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Surveyors</h2>
+            <p>This is where you can add surveyors to the database. A surveryor is required to create a quote.</p>
+            <a class="btn btn-secondary" href="{% url "surveyor-list" %}">View Surveyors</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Quotes</h2>
+            <p>This is where you can create quotes and add them to the database. Quotes are created for customers and are carried out by surveyors.</p>
+            <a class="btn btn-secondary" href="{% url "quote-list" %}">View Quotes</a>
+          </div>
+        </div>
+      </div>
+      <footer class="pt-3 mt-4 text-muted border-top">
+        © 2022
+      </footer>
+    </div>
+  </main>
+{% endblock %}
+

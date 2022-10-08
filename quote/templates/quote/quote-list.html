@@ -1,9 +1,10 @@
-{% extends "customer/base.html" %}
+{% extends "core/base.html" %}
 
 {% block title %}Quote List{% endblock %}
 
 {% block content %}
-    {% if quotes %}
+<h2>Quote List</h2>
+{% if quotes %}
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -12,6 +13,7 @@
                     <th scope="col">System Type</th>
                     <th scope="col">Premises Type</th>
                     <th scope="col">Status</th>
+                    <th scope="col" class="text-end">Sale Value</th>
                     <th scope="col" class="text-end">Action</th>
                 </tr>
             </thead>
@@ -23,9 +25,19 @@
                     <td>{{ quote.get_system_type_display }}</td>
                     <td>{{ quote.get_premises_type_display }}</td>
                     <td>{{ quote.get_quote_status_display }}</td>
+                    <td class="text-end">£{{ quote.quote_sale_value }}</td>
                     <td class="text-end"><a class="btn btn-primary" href="{{ quote.get_absolute_url }}" role="button">View</a></td>
                 </tr>
                 {% endfor %}
+                <tr>
+                    <th scope="row">Total</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-end">£{{ quotes.calculated_total }}</td>
+                    <td class="text-end"></td>
+                </tr>
             </tbody>
         </table>
     {% else %}

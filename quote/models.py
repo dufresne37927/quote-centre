@@ -4,6 +4,7 @@ from django.core.validators import MinValueValidator
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from customer.models import Customer
+from surveyor.models import Surveyor
 
 # Create your models here.
 
@@ -51,6 +52,16 @@ class Quote(models.Model):
         validators = [MinValueValidator(0.00)]
     )
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="quotes")
+    surveyor = models.ForeignKey(Surveyor, null=True, on_delete=models.SET_NULL, related_name="quotes")
     
     def get_absolute_url(self):
         return reverse("quote-detail", args=[self.id])
+
+    @property
+    def calculated_total(self):
+        # all_quotes = Quote.objects.all()
+        # total_value = all_quotes.aggregate(Sum('quote_sale_value'))['quote_sale_value__sum']
+        # total_items = sum(all_quotes.quote_sale_value)
+        # itemprices = str(all_quotes.aggregate(sum('quote_sale_value')))
+        # total_items = Quote.objects.aggregate(Sum('quote_sale_value'))
+        return "hello"

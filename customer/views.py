@@ -1,31 +1,15 @@
 from django.shortcuts import render, redirect
-from django.views.generic.base import TemplateView
 from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 from .forms import CustomerForm
 from .models import Customer
+from quote.forms import QuoteAddFromCustomerForm
+from quote.models import Quote
 
 # Create your views here.
-
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username = username, password = password)
-            login(request, user)
-            return redirect('welcome')
-    else:
-        form = UserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
-
-class WelcomeView(LoginRequiredMixin, TemplateView):
-    template_name = "customer/welcome.html"
 
 class CustomerListView(LoginRequiredMixin, ListView):
     template_name = "customer/customer-list.html"
@@ -52,3 +36,18 @@ class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     form_class = CustomerForm
     template_name = "customer/customer-add.html"
     success_url = "/customer"
+
+class CustomerAddQuoteView(LoginRequiredMixin, CreateView):
+    model = Quote
+    form_class = QuoteAddFromCustomerForm
+    template_name = "quote/quote-add-from-customer.html"
+    success_url = "/customer"
+    
+
+    def get_success_url(self):
+        customer_id=self.kwargs['pk']
+        return reverse_lazy('customer-detail', kwargs={'pk': customer_id})
+
+    def form_valid(self, form):
+        form.instance.customer_id = self.kwargs["pk"]
+        return super().form_valid(form)

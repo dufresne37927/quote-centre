@@ -14,6 +14,7 @@ class QuoteForm(ModelForm):
             "system_type": "System Type",
             "description": "System Description",
             "premises_type": "Premises Type",
+            "surveyor": "Surveyor",
             "quote_status": "Quote Status",
             "remarks": "Remarks",
             "creation_date": "Creation Date",
@@ -23,6 +24,9 @@ class QuoteForm(ModelForm):
             "quote_sale_value": "Sale Value",
         }
         error_messages = {
+            "customer": {
+                "required": "Please select a customer",
+            },
             "reference": {
                 "required": "Please enter a customer reference no.",
                 "max_length": "Please enter a shorter customer reference no."
@@ -32,3 +36,11 @@ class QuoteForm(ModelForm):
             "quotation_date" : DatePickerInput(),
             "valid_until" : DatePickerInput(),
         }
+
+class QuoteAddFromCustomerForm(QuoteForm):
+    class Meta(QuoteForm.Meta):
+        exclude = ["customer",]
+
+class QuoteAddFromSurveyorForm(QuoteForm):
+    class Meta(QuoteForm.Meta):
+        exclude = ["surveyor",]

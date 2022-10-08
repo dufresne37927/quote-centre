@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+
+{% block title %}Surveyor List{% endblock %}
+
+{% block content %}
+<h2>Surveyor List</h2>
+{% if surveyors %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Unique Id</th>
+                    <th scope="col">Surveyor Name</th>
+                    <th scope="col">Sales Region</th>
+                    <th scope="col">Mobile No.</th>
+                    <th scope="col">eMail Address</th>
+                    <th scope="col" class="text-end">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for surveyor in surveyors %}
+                <tr>
+                    <th scope="row">{{ surveyor.slug }}</th>
+                    <td>{{ surveyor.name }}</td>
+                    <td>{{ surveyor.get_sales_region_display }}</td>
+                    <td>{{ surveyor.mobile_no }}</td>
+                    <td>{{ surveyor.email_address }}</td>
+                    <td class="text-end"><a class="btn btn-primary" href="{{ surveyor.get_absolute_url }}" role="button">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>There are currently no surveyors in the database</p>
+    {% endif %}
+    <a class="btn btn-primary" href="/surveyor/add" role="button">Add Surveyor</a>
+{% endblock %}

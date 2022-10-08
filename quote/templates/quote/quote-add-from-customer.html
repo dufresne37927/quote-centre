@@ -3,52 +3,52 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h2>Add Customer</h2>
+<h2>Add Quote</h2>
   <form method="POST">
     {% csrf_token %}
     <div class="row">
         <div class="col-6">
-            {{ form.name|as_crispy_field }}
+            {% comment %} {{ form.customer|as_crispy_field }} {% endcomment %}
         </div>
         <div class="col-6">
-            {{ form.contact_name|as_crispy_field }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            {{ form.address1|as_crispy_field }}
-        </div>
-        <div class="col-6">
-            {{ form.email_address|as_crispy_field }}
+            {{ form.surveyor|as_crispy_field }}
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            {{ form.address2|as_crispy_field }}
+            {{ form.reference|as_crispy_field }}
         </div>
         <div class="col-6">
-            {{ form.telephone_no|as_crispy_field }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            {{ form.address3|as_crispy_field }}
-        </div>
-        <div class="col-6">
-            {{ form.mobile_no|as_crispy_field }}
+            {{ form.quotation_date|as_crispy_field }}
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            {{ form.town|as_crispy_field }}
+            {{ form.system_type|as_crispy_field }}
         </div>
         <div class="col-6">
-            {{ form.alt_telephone_no|as_crispy_field }}
+            {{ form.valid_until|as_crispy_field }}
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            {{ form.county|as_crispy_field }}
+            {{ form.description|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {% comment %} {{ form.last_modified|as_crispy_field }} {% endcomment %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.premises_type|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.quote_sale_value|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.quote_status|as_crispy_field }}
         </div>
         <div class="col-6">
             
@@ -56,12 +56,12 @@
     </div>
     <div class="row">
         <div class="col-6">
-            {{ form.post_code|as_crispy_field }}
+            {{ form.remarks|as_crispy_field }}
         </div>
         <div class="col-6">
             
         </div>
     </div>
-    <button type="submit" class="btn btn-success">Save Customer</button><a class="btn btn-danger" href='/customer'>Cancel</a>
+    <button type="submit" class="btn btn-success">Save Quote</button><a class="btn btn-danger" href='/customer'>Cancel</a>
   </form>
 {% endblock %}

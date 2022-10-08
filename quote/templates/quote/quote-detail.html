@@ -1,4 +1,4 @@
-{% extends "customer/base.html" %}
+{% extends "core/base.html" %}
 
 {% block title %}Quote Details{% endblock %}
 
@@ -9,11 +9,17 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Quote Details</h5>
+                <small class="text-muted">Quote Reference No.</small>
                 <p class="card-text">{{ quote.reference }}</p>
+                <small class="text-muted">System Type</small>
                 <p class="card-text">{{ quote.get_system_type_display }}</p>
+                <small class="text-muted">Description</small>
                 <p class="card-text">{{ quote.description }}</p>
+                <small class="text-muted">Premises Type</small>
                 <p class="card-text">{{ quote.get_premises_type_display }}</p>
+                <small class="text-muted">Quote Status</small>
                 <p class="card-text">{{ quote.get_quote_status_display }}</p>
+                <small class="text-muted">Remarks</small>
                 <p class="card-text">{{ quote.remarks }}</p>
             </div>
           </div>
@@ -22,11 +28,18 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">More Details</h5>
+                <small class="text-muted">Surveyor</small>
+                <p class="card-text">{{ quote.surveyor }}</p>
+                <small class="text-muted">Creation Date</small>
                 <p class="card-text">{{ quote.creation_date }}</p>
+                <small class="text-muted">Quotation Date</small>
                 <p class="card-text">{{ quote.quotation_date }}</p>
+                <small class="text-muted">Quote Valid Until</small>
                 <p class="card-text">{{ quote.valid_until }}</p>
+                <small class="text-muted">Last Modified</small>
                 <p class="card-text">{{ quote.last_modified }}</p>
-                <p class="card-text">{{ quote.quote_sale_value }}</p>
+                <small class="text-muted">Sale Value</small>
+                <p class="card-text">£{{ quote.quote_sale_value }}</p>
             </div>
           </div>
         </div>
