@@ -1,32 +1,32 @@
 {% extends "customer/base.html" %}
 
-{% block title %}Customer Details{% endblock %}
+{% block title %}Quote Details{% endblock %}
 
 {% block content %}
-    <h1>{{ customer.name }}</h1>
+    <h1>{{ quote.customer.name }}</h1>
     <div class="row">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Address Details</h5>
-                <p class="card-text">{{ customer.address1 }}</p>
-                <p class="card-text">{{ customer.address2 }}</p>
-                <p class="card-text">{{ customer.address3 }}</p>
-                <p class="card-text">{{ customer.town }}</p>
-                <p class="card-text">{{ customer.county }}</p>
-                <p class="card-text">{{ customer.post_code }}</p>
+              <h5 class="card-title">Quote Details</h5>
+                <p class="card-text">{{ quote.reference }}</p>
+                <p class="card-text">{{ quote.get_system_type_display }}</p>
+                <p class="card-text">{{ quote.description }}</p>
+                <p class="card-text">{{ quote.get_premises_type_display }}</p>
+                <p class="card-text">{{ quote.get_quote_status_display }}</p>
+                <p class="card-text">{{ quote.remarks }}</p>
             </div>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Contact Details</h5>
-                <p class="card-text">{{ customer.contact_name }}</p>
-                <p class="card-text">{{ customer.email_address }}</p>
-                <p class="card-text">{{ customer.telephone_no }}</p>
-                <p class="card-text">{{ customer.mobile_no }}</p>
-                <p class="card-text">{{ customer.alt_telephone_no }}</p>
+              <h5 class="card-title">More Details</h5>
+                <p class="card-text">{{ quote.creation_date }}</p>
+                <p class="card-text">{{ quote.quotation_date }}</p>
+                <p class="card-text">{{ quote.valid_until }}</p>
+                <p class="card-text">{{ quote.last_modified }}</p>
+                <p class="card-text">{{ quote.quote_sale_value }}</p>
             </div>
           </div>
         </div>
@@ -64,8 +64,8 @@
     {% else %}
         <p>There are no quotes to display</p>
     {% endif %}
-    <a class="btn btn-primary" href="{% url "customer-list" %}" role="button">Go Back</a>
-    <a class="btn btn-primary" href="{{ customer.get_absolute_url }}/update" role="button">Update Customer</a>
-    <a class="btn btn-danger" href="{{ customer.get_absolute_url }}/delete" role="button">Delete Customer</a>
-    <a class="btn btn-secondary" href="{{ customer.get_absolute_url }}/addquote" role="button">Add Quote</a>
+    <a class="btn btn-primary" href="{% url "quote-list" %}" role="button">Go Back</a>
+    <a class="btn btn-primary" href="{{ quote.get_absolute_url }}/update" role="button">Update Quote</a>
+    <a class="btn btn-danger" href="{{ quote.get_absolute_url }}/delete" role="button">Delete Quote</a>
+    <a class="btn btn-secondary" href="{{ quote.get_absolute_url }}/addquote" role="button">Add Quote</a>
 {% endblock %}

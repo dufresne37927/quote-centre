@@ -1,0 +1,67 @@
+{% extends "customer/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2>Add Quote</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-6">
+            {{ form.customer|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {% comment %} {{ form.creation_date|as_crispy_field }} {% endcomment %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.reference|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.quotation_date|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.system_type|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.valid_until|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.description|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {% comment %} {{ form.last_modified|as_crispy_field }} {% endcomment %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.premises_type|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.quote_sale_value|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.quote_status|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.remarks|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save Quote</button><a class="btn btn-danger" href='/customer'>Cancel</a>
+  </form>
+{% endblock %}

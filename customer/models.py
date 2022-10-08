@@ -1,6 +1,4 @@
 from django.db import models
-from django.db.models import Sum
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
@@ -22,3 +20,6 @@ class Customer(models.Model):
 
     def get_absolute_url(self):
         return reverse("customer-detail", args=[self.id])
+
+    def __str__(self):
+        return self.name

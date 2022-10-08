@@ -1,0 +1,35 @@
+{% extends "customer/base.html" %}
+
+{% block title %}Quote List{% endblock %}
+
+{% block content %}
+    {% if quotes %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">System Type</th>
+                    <th scope="col">Premises Type</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" class="text-end">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for quote in quotes %}
+                <tr>
+                    <th scope="row">{{ quote.id }}</th>
+                    <td>{{ quote.customer.name }}</td>
+                    <td>{{ quote.get_system_type_display }}</td>
+                    <td>{{ quote.get_premises_type_display }}</td>
+                    <td>{{ quote.get_quote_status_display }}</td>
+                    <td class="text-end"><a class="btn btn-primary" href="{{ quote.get_absolute_url }}" role="button">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>There are currently no quotes in the database</p>
+    {% endif %}
+    <a class="btn btn-primary" href="/quote/add" role="button">Add Quote</a>
+{% endblock %}

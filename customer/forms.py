@@ -26,3 +26,4 @@ class CustomerForm(ModelForm):
                 "max_length": "Please enter a shorter customer name"
             }
         }
+        
