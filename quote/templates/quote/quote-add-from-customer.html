@@ -8,7 +8,7 @@
     {% csrf_token %}
     <div class="row">
         <div class="col-6">
-            {% comment %} {{ form.customer|as_crispy_field }} {% endcomment %}
+            
         </div>
         <div class="col-6">
             {{ form.surveyor|as_crispy_field }}
@@ -32,34 +32,23 @@
     </div>
     <div class="row">
         <div class="col-6">
-            {{ form.description|as_crispy_field }}
-        </div>
-        <div class="col-6">
-            {% comment %} {{ form.last_modified|as_crispy_field }} {% endcomment %}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
             {{ form.premises_type|as_crispy_field }}
         </div>
         <div class="col-6">
-            {{ form.quote_sale_value|as_crispy_field }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
             {{ form.quote_status|as_crispy_field }}
         </div>
-        <div class="col-6">
-            
-        </div>
     </div>
     <div class="row">
+        <div class="col-6">
+            {{ form.quote_sale_value|as_crispy_field }}
+        </div>
         <div class="col-6">
             {{ form.remarks|as_crispy_field }}
         </div>
-        <div class="col-6">
-            
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form.description|as_crispy_field }}
         </div>
     </div>
     <button type="submit" class="btn btn-success">Save Quote</button><a class="btn btn-danger" href='/customer'>Cancel</a>

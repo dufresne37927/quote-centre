@@ -44,39 +44,7 @@
           </div>
         </div>
       </div>
-    
-    {% if customer.quotes.count > 0 %}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">#</th>
-                <th scope="col" class="text-end">#</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for quote in customer.quotes.all %}
-            <tr>
-                {% comment %} <th scope="row">{{ forloop.counter }}</th> {% endcomment %}
-                {% comment %} <td>{{ quote.description }}</td> {% endcomment %}
-                <td>#</td>
-                <td>#</td>
-                <td class="text-end">£</td>
-            </tr>
-            {% endfor %}
-            <tr>
-                {% comment %} <th scope="row">Total</th> {% endcomment %}
-                <td></td>
-                <td></td>
-                <td class="text-end"></td>
-                {% comment %} <td class="text-end">£{{ quote.calculated_total|floatformat:"2g" }}</td> {% endcomment %}
-            </tr>
-        </tbody>
-        
-    </table>
-    {% else %}
-        <p>There are no quotes to display</p>
-    {% endif %}
+    <br />
     <a class="btn btn-primary" href="{% url "quote-list" %}" role="button">Go Back</a>
     <a class="btn btn-primary" href="{{ quote.get_absolute_url }}/update" role="button">Update Quote</a>
     <a class="btn btn-danger" href="{{ quote.get_absolute_url }}/delete" role="button">Delete Quote</a>
