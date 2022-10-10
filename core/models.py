@@ -3,6 +3,8 @@ from django.db import models
 
 # Create your models here.
 
+# Custom user class with is_admin flag
+# See reference in readme for acknowledgement
 class User(AbstractUser):
     is_admin = models.BooleanField(default=False)
 

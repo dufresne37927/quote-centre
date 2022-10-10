@@ -59,12 +59,3 @@ class Quote(models.Model):
 
     def __str__(self):
         return "%s (id: %s, customer: %s)" %(self.reference, self.id, self.customer.name,)
-
-    @property
-    def calculated_total(self):
-        # all_quotes = Quote.objects.all()
-        # total_value = all_quotes.aggregate(Sum('quote_sale_value'))['quote_sale_value__sum']
-        # total_items = sum(all_quotes.quote_sale_value)
-        # itemprices = str(all_quotes.aggregate(sum('quote_sale_value')))
-        # total_items = Quote.objects.aggregate(Sum('quote_sale_value'))
-        return "hello"
